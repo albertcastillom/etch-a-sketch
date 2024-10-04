@@ -8,11 +8,8 @@
 </head>
 <body>
     <h1>Etch-a-Sketch</h1>
-    
-    <div id = "container">
-
-
-
+    <div id="track">
+    <div id = "container"></div>
     </div>
     <script>
 
@@ -26,12 +23,14 @@
             container.appendChild(gridDiv);
         }
 
-
+        let track = document.querySelectorAll(".grid");
+        track.forEach((item) => {
+        item.addEventListener("mouseenter", (e) =>{
+          item.style.backgroundColor = "black";
+        });
+        });
 
         
-
-
-
     </script>
 </body>
 </html>
