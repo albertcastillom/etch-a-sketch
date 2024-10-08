@@ -8,29 +8,73 @@
 </head>
 <body>
     <h1>Etch-a-Sketch</h1>
-    <div id="track">
+    <input type="range" id="mySlider" min="8" max="100" value="16">
+    <p>Value: <span id="sliderValue"></span></p>
     <div id = "container"></div>
-    </div>
     <script>
 
+        const slider = document.getElementById("mySlider");
+        const sliderValue = document.getElementById("sliderValue");
+        slider.addEventListener("input", (event) => {
+            sliderValue.textContent = event.target.value;
+            newGridCreation(event.target.value);
+        });
+
+
+        function firstGrid(){
         for(let i = 0; i <256; i++){
-            const container = document.querySelector("#container")
+            const container = document.querySelector("#container");
             const gridDiv = document.createElement("div");
-            gridDiv.textContent = "";
+            
             gridDiv.classList.add("grid");
-            gridDiv.style.width = "10px";
-            gridDiv.style.height = "10px";
+            gridDiv.style.width = "60px";
+            gridDiv.style.height = "60px";
+            container.style.width = "960px"
+            container.style.height = "960px"
+            container.appendChild(gridDiv);
+            }
+            gridHover();
+         };
+
+    firstGrid();
+
+
+    function newGridCreation(value){
+        deleteGrid();
+        for(let i = 0; i <(value*value); i++){
+            const container = document.querySelector("#container");
+            const gridDiv = document.createElement("div");
+            
+            gridDiv.classList.add("grid");
+            gridDiv.style.width = (960/value) + "px";
+            gridDiv.style.height = (960/value) + "px";
+            container.style.width = "960px"
+            container.style.height = "960px"
             container.appendChild(gridDiv);
         }
+       gridHover();
 
-        let track = document.querySelectorAll(".grid");
-        track.forEach((item) => {
+    };
+
+    function deleteGrid(){
+        const container = document.querySelectorAll(".grid");
+        container.forEach((item) => {
+            item.remove();
+        });
+    };
+
+    function gridHover(){
+       let container = document.querySelectorAll(".grid");
+        container.forEach((item) => {
         item.addEventListener("mouseenter", (e) =>{
           item.style.backgroundColor = "black";
         });
         });
+    };
 
-        
+    
+       
+
     </script>
 </body>
 </html>
