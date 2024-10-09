@@ -8,9 +8,15 @@
 </head>
 <body>
     <h1>Etch-a-Sketch</h1>
-    <input type="range" id="mySlider" min="8" max="100" value="16">
+
+    <div class="slideContainer">
+    <input type="range" id="mySlider" min="8" max="100" value="16" class="slider">
+    </div>
+
     <p>Value: <span id="sliderValue"></span></p>
+
     <div id = "container"></div>
+
     <script>
 
         const slider = document.getElementById("mySlider");
@@ -27,10 +33,10 @@
             const gridDiv = document.createElement("div");
             
             gridDiv.classList.add("grid");
-            gridDiv.style.width = "60px";
-            gridDiv.style.height = "60px";
-            container.style.width = "960px"
-            container.style.height = "960px"
+            gridDiv.style.width = "40px";
+            gridDiv.style.height = "40px";
+            container.style.width = "640px"
+            container.style.height = "640px"
             container.appendChild(gridDiv);
             }
             gridHover();
@@ -46,10 +52,10 @@
             const gridDiv = document.createElement("div");
             
             gridDiv.classList.add("grid");
-            gridDiv.style.width = (960/value) + "px";
-            gridDiv.style.height = (960/value) + "px";
-            container.style.width = "960px"
-            container.style.height = "960px"
+            gridDiv.style.width = (640/value) + "px";
+            gridDiv.style.height = (640/value) + "px";
+            container.style.width = "640px"
+            container.style.height = "640px"
             container.appendChild(gridDiv);
         }
        gridHover();
